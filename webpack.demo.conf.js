@@ -4,7 +4,6 @@ const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
-  // watch: true,
   devtool: 'none',
   devServer: {
       clientLogLevel: 'warning',
@@ -13,8 +12,8 @@ module.exports = {
       compress: true,
       host: '0.0.0.0',
       port: 8081,
-      useLocalIp: true,
-      // open: true,
+      // useLocalIp: true,
+      open: true,
       overlay: { 
           warnings: false, 
           errors: true 

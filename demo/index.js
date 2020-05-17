@@ -1,12 +1,8 @@
 import * as tf from '@tensorflow/tfjs-core';
 import * as tfjsWasm from '@tensorflow/tfjs-backend-wasm';
 import * as blazeface from '../src/index.ts';
-import { load } from '../src/index.ts';
 
 tfjsWasm.setWasmPath('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@latest/dist/tfjs-backend-wasm.wasm');
-
-console.log(load);
-console.log(blazeface);
 
 
 const stats = new Stats();
@@ -43,11 +39,14 @@ async function setupCamera() {
 const renderPrediction = async () => {
   stats.begin();
 
+  console.time('face prediction');
   const returnTensors = false;
   const flipHorizontal = true;
   const annotateBoxes = true;
   const predictions = await model.estimateFaces(
     video, returnTensors, flipHorizontal, annotateBoxes);
+
+  console.log(predictions);
 
   if (predictions.length > 0) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -79,6 +78,8 @@ const renderPrediction = async () => {
       }
     }
   }
+
+  console.timeEnd('face prediction');
 
   stats.end();
 

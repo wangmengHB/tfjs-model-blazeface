@@ -12,8 +12,7 @@
   "scripts": {
     "build": "rm -rf dist && rm -rf lib && tsc --outDir './lib'",
     "prepublish": "npm run build",
-    "dev": "webpack-dev-server --https --inline --progress --config ./webpack.demo.conf.js",
-    "test": "webpack --config ./webpack.demo.conf.js"
+    "dev": "webpack-dev-server --https --inline --progress --config ./webpack.demo.conf.js"
   },
   "repository": {
     "type": "git",
