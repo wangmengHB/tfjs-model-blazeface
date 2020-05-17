@@ -1,0 +1,42 @@
+{
+  "name": "tfjs-model-blazeface",
+  "version": "0.0.1",
+  "description": "tfjs model blazeface for local environment",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && rm -rf lib && tsc --outDir './lib'",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangmengHB/tfjs-model-blazeface.git"
+  },
+  "keywords": [
+    "blazeface"
+  ],
+  "author": "Meng Wang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wangmengHB/tfjs-model-blazeface/issues"
+  },
+  "homepage": "https://github.com/wangmengHB/tfjs-model-blazeface#readme",
+  "peerDependencies": {
+    "@tensorflow/tfjs-converter": "^1.5.2",
+    "@tensorflow/tfjs-core": "^1.5.2"
+  },
+  "devDependencies": {
+    "@tensorflow/tfjs-converter": "^1.5.2",
+    "@tensorflow/tfjs-core": "^1.5.2",
+    "rimraf": "~2.6.2",
+    "typescript": "^3.9.2"
+  },
+  "resolutions": {
+    "@types/webgl2": "0.0.5"
+  }
+}
