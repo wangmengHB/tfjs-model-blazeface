@@ -14,13 +14,14 @@
 		"paths": {
 			"src/*": ["./src/*"]
     },
-		"moduleResolution": "node",	
+		"moduleResolution": "node",
+		"allowSyntheticDefaultImports": true,	
 		"preserveConstEnums": true, 
     "lib": [
       "dom",
       "es2020"
     ],
-    "module": "commonjs",
+    "module": "esnext",
     "declaration": true,
     "target": "es5",
     "removeComments": false,

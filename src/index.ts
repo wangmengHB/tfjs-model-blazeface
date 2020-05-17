@@ -16,12 +16,9 @@
  */
 
 import * as tfconv from '@tensorflow/tfjs-converter';
-import {BlazeFaceModel} from './face';
+import { BlazeFaceModel } from './face';
 
-// const BLAZEFACE_MODEL_URL =
-//     'https://tfhub.dev/tensorflow/tfjs-model/blazeface/1/default/1';
-
-const URL1 = 'http://127.0.0.1:8080/blazeface/0.0.1/model.json';
+const DEFAULT_MODLE_URL = 'https://unpkg.com/local-tfjs-models@0.0.0/blazeface/0.0.1/model.json';
 
 /**
  * Load blazeface.
@@ -35,18 +32,19 @@ const URL1 = 'http://127.0.0.1:8080/blazeface/0.0.1/model.json';
  *  `scoreThreshold` The threshold for deciding when to remove boxes based
  * on score.
  */
-export async function load({
-  maxFaces = 10,
-  inputWidth = 128,
-  inputHeight = 128,
-  iouThreshold = 0.3,
-  scoreThreshold = 0.75
-} = {}): Promise<BlazeFaceModel> {
-  // const blazeface =
-  //     await tfconv.loadGraphModel(BLAZEFACE_MODEL_URL, {fromTFHub: true});
+export async function load(
+  modelUrl = DEFAULT_MODLE_URL,
+  {
+    maxFaces = 10,
+    inputWidth = 128,
+    inputHeight = 128,
+    iouThreshold = 0.3,
+    scoreThreshold = 0.75
+  } = {}
+): Promise<BlazeFaceModel> {
 
   const blazeface =
-      await tfconv.loadGraphModel(URL1);
+      await tfconv.loadGraphModel(modelUrl);
 
   const model = new BlazeFaceModel(
       blazeface, inputWidth, inputHeight, maxFaces, iouThreshold,

@@ -1,11 +1,13 @@
 import * as tf from '@tensorflow/tfjs-core';
 import * as tfjsWasm from '@tensorflow/tfjs-backend-wasm';
-import * as blazeface from '../src';
+import * as blazeface from '../src/index.ts';
+import { load } from '../src/index.ts';
 
 tfjsWasm.setWasmPath('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@latest/dist/tfjs-backend-wasm.wasm');
 
-alert('loaded');
-console.log('loaded');
+console.log(load);
+console.log(blazeface);
+
 
 const stats = new Stats();
 stats.showPanel(0);
