@@ -1,6 +1,6 @@
 {
   "name": "tfjs-model-blazeface",
-  "version": "0.0.0-rc.1",
+  "version": "0.0.0-rc.2",
   "description": "tfjs model blazeface for local environment",
   "main": "lib/index.js",
   "module": "lib/index.js",
@@ -10,7 +10,7 @@
     "lib"
   ],
   "scripts": {
-    "build": "rm -rf dist && rm -rf lib && tsc --module 'UMD' --outDir './lib'",
+    "build": "rm -rf dist && rm -rf lib && tsc --module 'CommonJS' --outDir './lib'",
     "prepublish": "npm run build",
     "dev": "webpack-dev-server --https --inline --progress --config ./webpack.demo.conf.js"
   },
