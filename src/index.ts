@@ -33,14 +33,14 @@ const DEFAULT_MODLE_URL = 'https://unpkg.com/local-tfjs-models@0.0.0/blazeface/0
  * on score.
  */
 export async function load(
-  modelUrl = DEFAULT_MODLE_URL,
   {
     maxFaces = 10,
     inputWidth = 128,
     inputHeight = 128,
     iouThreshold = 0.3,
     scoreThreshold = 0.75
-  } = {}
+  } = {},
+  modelUrl = DEFAULT_MODLE_URL,
 ): Promise<BlazeFaceModel> {
 
   const blazeface =
