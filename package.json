@@ -1,6 +1,6 @@
 {
   "name": "tfjs-model-blazeface",
-  "version": "0.0.0-rc.5",
+  "version": "0.0.0-rc.6",
   "description": "tfjs model blazeface for local environment",
   "main": "lib/index.js",
   "module": "lib/index.js",
