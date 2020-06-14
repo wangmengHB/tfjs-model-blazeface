@@ -20,7 +20,7 @@ import { BlazeFaceModel } from './face';
 import { createCustomLoader, loadArtifactFromCache } from 'tfjs-model-load-util';
 
 const DEFAULT_MODLE_URL = 'https://unpkg.com/local-tfjs-models@0.0.1/blazeface/google/model.json';
-const DEFAULT_MODEL_NAME = 'blazeface003';
+const DEFAULT_MODEL_NAME = 'BLAZEFACE_CACHE_KEY';
 
 
 // call this at the very beginning when the page is laoding...
@@ -47,8 +47,6 @@ export async function initialize(
  * on score.
  */
 export async function load(
-  modelUrl = DEFAULT_MODLE_URL,
-  modelName = DEFAULT_MODEL_NAME,
   {
     maxFaces = 10,
     inputWidth = 128,
@@ -56,6 +54,8 @@ export async function load(
     iouThreshold = 0.3,
     scoreThreshold = 0.75
   } = {},
+  modelUrl = DEFAULT_MODLE_URL,
+  modelName = DEFAULT_MODEL_NAME,
 ): Promise<BlazeFaceModel> {
 
   const blazeface = await tf.loadGraphModel(createCustomLoader(modelUrl, modelName));
