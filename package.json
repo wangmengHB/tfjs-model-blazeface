@@ -1,6 +1,6 @@
 {
   "name": "tfjs-model-blazeface",
-  "version": "0.0.0-rc.4",
+  "version": "0.0.0-rc.5",
   "description": "tfjs model blazeface for local environment",
   "main": "lib/index.js",
   "module": "lib/index.js",
@@ -29,10 +29,6 @@
     "url": "https://github.com/wangmengHB/tfjs-model-blazeface/issues"
   },
   "homepage": "https://github.com/wangmengHB/tfjs-model-blazeface#readme",
-  "peerDependencies": {
-    "@tensorflow/tfjs-converter": "^1.5.2",
-    "@tensorflow/tfjs-core": "^1.5.2"
-  },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
@@ -40,9 +36,6 @@
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-typescript": "^7.1.0",
     "@babel/register": "^7.0.0",
-    "@tensorflow/tfjs-backend-wasm": "^1.7.4",
-    "@tensorflow/tfjs-converter": "^1.5.2",
-    "@tensorflow/tfjs-core": "^1.5.2",
     "babel-loader": "^8.1.0",
     "core-js": "^2.6.11",
     "css-loader": "^2.1.0",
@@ -59,5 +52,9 @@
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "2.0.0",
+    "tfjs-model-load-util": "^0.0.0-rc.2"
   }
 }

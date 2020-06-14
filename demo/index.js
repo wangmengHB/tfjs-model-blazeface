@@ -1,24 +1,13 @@
-import * as tf from '@tensorflow/tfjs-core';
-import * as tfjsWasm from '@tensorflow/tfjs-backend-wasm';
+import * as tf from '@tensorflow/tfjs';
 import * as blazeface from '../src/index.ts';
 
-tfjsWasm.setWasmPath('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@1.7.4/dist/tfjs-backend-wasm.wasm');
 
+tf.setBackend('webgl');
 
-const stats = new Stats();
-stats.showPanel(0);
-document.body.prepend(stats.domElement);
 
 let model, ctx, videoWidth, videoHeight, video, canvas;
 
-const state = {
-  backend: 'wasm'
-};
 
-const gui = new dat.GUI();
-gui.add(state, 'backend', ['wasm', 'webgl', 'cpu']).onChange(async backend => {
-  await tf.setBackend(backend);
-});
 
 async function setupCamera() {
   video = document.getElementById('video');
@@ -37,8 +26,7 @@ async function setupCamera() {
 }
 
 const renderPrediction = async () => {
-  stats.begin();
-
+  
   console.time('face prediction');
   const returnTensors = false;
   const flipHorizontal = true;
@@ -68,8 +56,8 @@ const renderPrediction = async () => {
 
       if (annotateBoxes) {
         const landmarks = predictions[i].landmarks;
-
         ctx.fillStyle = "blue";
+        // eyes, ears, nose, and mouth
         for (let j = 0; j < landmarks.length; j++) {
           const x = landmarks[j][0];
           const y = landmarks[j][1];
@@ -81,13 +69,17 @@ const renderPrediction = async () => {
 
   console.timeEnd('face prediction');
 
-  stats.end();
+  
 
-  requestAnimationFrame(renderPrediction);
+  setTimeout(() => {
+    requestAnimationFrame(renderPrediction);
+  }, 10)
+  
 };
 
 const setupPage = async () => {
-  await tf.setBackend(state.backend);
+  await tf.setBackend('webgl');
+  await blazeface.initialize();
   await setupCamera();
   video.play();
 

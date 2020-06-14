@@ -15,8 +15,7 @@
  * =============================================================================
  */
 
-import * as tfconv from '@tensorflow/tfjs-converter';
-import * as tf from '@tensorflow/tfjs-core';
+import * as tf from '@tensorflow/tfjs';
 
 import {Box, createBox, disposeBox, scaleBox} from './box';
 
@@ -192,7 +191,7 @@ function scaleBoxFromPrediction(
 }
 
 export class BlazeFaceModel {
-  private blazeFaceModel: tfconv.GraphModel;
+  private blazeFaceModel: tf.GraphModel;
   private width: number;
   private height: number;
   private maxFaces: number;
@@ -204,7 +203,7 @@ export class BlazeFaceModel {
   private scoreThreshold: number;
 
   constructor(
-      model: tfconv.GraphModel, width: number, height: number, maxFaces: number,
+      model: tf.GraphModel, width: number, height: number, maxFaces: number,
       iouThreshold: number, scoreThreshold: number) {
     this.blazeFaceModel = model;
     this.width = width;

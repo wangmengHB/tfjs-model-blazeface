@@ -15,10 +15,24 @@
  * =============================================================================
  */
 
-import * as tfconv from '@tensorflow/tfjs-converter';
+import * as tf from '@tensorflow/tfjs';
 import { BlazeFaceModel } from './face';
+import { createCustomLoader, loadArtifactFromCache } from 'tfjs-model-load-util';
 
-const DEFAULT_MODLE_URL = 'https://unpkg.com/local-tfjs-models@0.0.0/blazeface/0.0.1/model.json';
+const DEFAULT_MODLE_URL = 'https://unpkg.com/local-tfjs-models@0.0.1/blazeface/google/model.json';
+const DEFAULT_MODEL_NAME = 'blazeface003';
+
+
+// call this at the very beginning when the page is laoding...
+// this function is used to cache models in indexedDB in advance.
+export async function initialize(
+  modelUrl = DEFAULT_MODLE_URL,
+  modelName = DEFAULT_MODEL_NAME,
+) {
+  await loadArtifactFromCache(modelUrl, modelName);
+  return true;
+}
+
 
 /**
  * Load blazeface.
@@ -41,10 +55,10 @@ export async function load(
     scoreThreshold = 0.75
   } = {},
   modelUrl = DEFAULT_MODLE_URL,
+  modelName = DEFAULT_MODEL_NAME,
 ): Promise<BlazeFaceModel> {
 
-  const blazeface =
-      await tfconv.loadGraphModel(modelUrl);
+  const blazeface = await tf.loadGraphModel(createCustomLoader(modelUrl, modelName));
 
   const model = new BlazeFaceModel(
       blazeface, inputWidth, inputHeight, maxFaces, iouThreshold,
@@ -53,3 +67,4 @@ export async function load(
 }
 
 export {NormalizedFace, BlazeFaceModel, BlazeFacePrediction} from './face';
+

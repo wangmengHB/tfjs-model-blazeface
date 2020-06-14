@@ -41,8 +41,6 @@ limitations under the License.
 </style>
 
 <body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.6/dat.gui.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.min.js"></script>
   <div id="main">
     <video id="video" playsinline style="
       -webkit-transform: scaleX(-1);
@@ -52,20 +50,6 @@ limitations under the License.
       ">
     </video>
     <canvas id="output"></canvas>
-    <div id="description">
-      <div id="description-title">Blazeface demo</div>
-      <p>This demo shows the blazeface model detecting faces in a live camera feed. The demo renders a semi-transparent
-        red
-        box over faces, and blue dots over facial landmarks (eyes, ears, nose, and mouth).</p>
-    </div>
-    <video id="video" playsinline style="
-      -webkit-transform: scaleX(-1);
-      transform: scaleX(-1);
-      visibility: hidden;
-      width: auto;
-      height: auto;
-      ">
-    </video>
   </div>
 </body>
 
