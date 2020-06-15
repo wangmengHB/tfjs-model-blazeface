@@ -1,6 +1,6 @@
 {
   "name": "tfjs-model-blazeface",
-  "version": "0.0.0-rc.7",
+  "version": "0.0.0-rc.8",
   "description": "tfjs model blazeface for local environment",
   "main": "lib/index.js",
   "module": "lib/index.js",
@@ -55,6 +55,6 @@
   },
   "dependencies": {
     "@tensorflow/tfjs": "2.0.0",
-    "tfjs-model-load-util": "^0.0.0-rc.2"
+    "tfjs-model-load-util": "0.0.0-rc.2"
   }
 }

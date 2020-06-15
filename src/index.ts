@@ -19,15 +19,15 @@ import * as tf from '@tensorflow/tfjs';
 import { BlazeFaceModel } from './face';
 import { createCustomLoader, loadArtifactFromCache } from 'tfjs-model-load-util';
 
-const DEFAULT_MODLE_URL = 'https://unpkg.com/local-tfjs-models@0.0.1/blazeface/google/model.json';
-const DEFAULT_MODEL_NAME = 'BLAZEFACE_CACHE_KEY';
+export const DEFAULT_BLAZEFACE_MODLE_URL = 'https://unpkg.com/local-tfjs-models@0.0.1/blazeface/google/model.json';
+export const DEFAULT_BLAZEFACE_MODEL_NAME = 'BLAZEFACE_CACHE_KEY';
 
 
 // call this at the very beginning when the page is laoding...
 // this function is used to cache models in indexedDB in advance.
 export async function initialize(
-  modelUrl = DEFAULT_MODLE_URL,
-  modelName = DEFAULT_MODEL_NAME,
+  modelUrl = DEFAULT_BLAZEFACE_MODLE_URL,
+  modelName = DEFAULT_BLAZEFACE_MODEL_NAME,
 ) {
   await loadArtifactFromCache(modelUrl, modelName);
   return true;
@@ -54,8 +54,8 @@ export async function load(
     iouThreshold = 0.3,
     scoreThreshold = 0.75
   } = {},
-  modelUrl = DEFAULT_MODLE_URL,
-  modelName = DEFAULT_MODEL_NAME,
+  modelUrl = DEFAULT_BLAZEFACE_MODLE_URL,
+  modelName = DEFAULT_BLAZEFACE_MODEL_NAME,
 ): Promise<BlazeFaceModel> {
 
   const blazeface = await tf.loadGraphModel(createCustomLoader(modelUrl, modelName));
