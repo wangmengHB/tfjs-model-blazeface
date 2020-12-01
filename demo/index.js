@@ -27,14 +27,14 @@ async function setupCamera() {
 
 const renderPrediction = async () => {
   
-  console.time('face prediction');
+  let beginTime = new Date().getTime();
+
   const returnTensors = false;
   const flipHorizontal = true;
   const annotateBoxes = true;
   const predictions = await model.estimateFaces(
     video, returnTensors, flipHorizontal, annotateBoxes);
 
-  console.log(predictions);
 
   if (predictions.length > 0) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -67,7 +67,16 @@ const renderPrediction = async () => {
     }
   }
 
-  console.timeEnd('face prediction');
+  let doneTime = new Date().getTime() - beginTime;
+
+  let time = document.getElementById('time');
+  time.innerText = `${doneTime} ms`;
+
+  let output = document.getElementById('outputlog');
+
+  output.value = `${JSON.stringify(predictions, null, 4)}`;
+
+
 
   
 

@@ -15,12 +15,13 @@ limitations under the License.
 
 <style>
   body {
-    margin: 25px;
+    margin: 0px;
+    padding: 0;
+    display: flex;
   }
 
   #main {
     position: relative;
-    margin: 50px 0;
   }
 
   canvas {
@@ -29,15 +30,15 @@ limitations under the License.
     left: 0;
   }
 
-  #description {
-    margin-top: 20px;
+  .description{
     width: 600px;
+    margin-left: 20px;
+    text-align: left;
+    display: flex;
+
   }
 
-  #description-title {
-    font-weight: bold;
-    font-size: 18px;
-  }
+  
 </style>
 
 <body>
@@ -50,6 +51,16 @@ limitations under the License.
       ">
     </video>
     <canvas id="output"></canvas>
+  </div>
+  <div class="description">
+    <div>
+      <div>耗时：</div>
+      <div id="time"></div>
+    </div>
+    <div>
+      <div>数据：</div>
+      <textarea id="outputlog" style="height: 600px; width: 400px;"></textarea>
+    </div>
   </div>
 </body>
 
